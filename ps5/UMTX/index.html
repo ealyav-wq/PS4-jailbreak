@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- <html manifest="cache.appcache"> -->
+
+<head>
+    <meta charset="utf-8">
+    <title>elya | PS5 UMTX2 Jailbreak</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="main.css">
+    <style>
+        :root {
+            --bg-color: #07090e;
+            --card-bg: #111622;
+            --accent-cyan: #00f0ff;
+            --accent-glow: rgba(0, 240, 255, 0.2);
+            --text-primary: #f0f6fc;
+            --text-secondary: #8b949e;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            background-color: var(--bg-color) !important;
+            color: var(--text-primary) !important;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: space-between;
+        }
+
+        .elya-brand {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: var(--accent-cyan);
+            margin-bottom: 8px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .card-container {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            max-width: 650px;
+            width: 90%;
+            margin: 20px auto;
+        }
+
+        #main-content {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn {
+            background: #1a2233 !important;
+            color: var(--text-primary) !important;
+            border: 1px solid var(--border-color) !important;
+            border-radius: 10px !important;
+            padding: 0.75rem 2.5rem !important;
+            font-weight: 600 !important;
+            transition: all 0.2s ease-in-out !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        .btn:hover {
+            background: #26334d !important;
+            border-color: var(--accent-cyan) !important;
+            color: var(--accent-cyan) !important;
+            box-shadow: 0 0 15px var(--accent-glow) !important;
+            transform: translateY(-2px);
+        }
+
+        .log, #console {
+            background: #0b0f17 !important;
+            border: 1px solid var(--border-color) !important;
+            border-radius: 10px !important;
+            padding: 15px !important;
+            color: var(--accent-cyan) !important;
+            font-family: monospace !important;
+        }
+
+        .text-secondary {
+            color: var(--text-secondary) !important;
+        }
+
+        .l2-redirect-box {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--accent-cyan);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<!-- body is set up as three rows: auto 1fr auto -->
+<body>
+    <!-- Row 1 -->
+    <div class="p-2">
+        <div class="elya-brand">elya Host</div>
+        <h1 class="text-center" style="font-size: 26px; font-weight: 700; margin-bottom: 10px;">PS5 UMTX2 Jailbreak (1.xx-5.xx)</h1>
+        <p class="text-center" id="top-bar-text">Current firmware: <span class="fw-bold" id="current-fw"></span></p>
+
+        <!-- This is absolute positioned to the body-->
+        <div id="toast-container"></div>
+    </div>
+
+    <!-- Row 2 -->
+    <div id="main-content">
+        <div class="card-container">
+            <div id="pre-jb-view" class="d-flex align-items-center justify-content-center flex-direction-column selected" style="gap: 15px;">
+                <a tabindex="0" class="btn fw-bold" id="run-jb" onclick="run()">Jailbreak</a>
+                <a tabindex="0" class="btn" style="padding: 0.5rem 2rem; font-size: 1rem;" id="run-wk-only"
+                    onclick="run(true)">Webkit-only (sender)</a>
+            </div>
+
+            <div id="console-view">
+                <div id="console" class="log"></div>
+            </div>
+
+            <div id="payloads-view">
+            </div>
+        </div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="position-relative text-center p-2 mb-2">
+        <p class="text-secondary" id="version">v1.0</p>
+        <p class="text-secondary" style="font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 11px;">Special Thanks & Credits</p>
+        <!-- Same greetz list the p2jb / poopsploit landings carry, so every site on the
+             host reads the same. This replaces the upstream mirror's own list on purpose;
+             MIRROR.md tracks the code, not the credits.[span_2](start_span)[span_2](end_span) -->
+        <h3 class="text-secondary mt-2" style="font-size: 12px; line-height: 1.6; max-width: 800px; margin: 0 auto;">
+            zecoxao, ChendoChap, abc/psfree, idlesauce, flat_z, TheFlow,
+            c0w-ar, earthonion, SIStro, egycnq, abkarino, gezine, Dr.Yenyen,
+            <br />
+            StonedModder, VoidWhisper, EchoStretch, BestPig, AlAzif, drakmor,
+            hzhreal, hammer-83, ntfargo, shahrilnet, Znullptr,
+            <br />
+            LM, ItsJokerZz, cblock, BeLegal, Lord Caio Barros[span_3](start_span)[span_3](end_span)
+        </h3>
+        <p class="text-secondary mt-2" style="font-size: 11px;">based on the slopkit by j0rdy[span_4](start_span)[span_4](end_span)</p>
+
+        <div class="position-absolute d-flex align-items-center bottom-0 left-0 m-4">
+            <div class="l2-redirect-box">L2</div>
+            <span class="ml-2" style="font-size: 12px;">Redirect</span>
+        </div>
+    </div>
+
+    <script src="int64.js"></script>
+    <script src="rop.js"></script>
+    <script src="main.js"></script>
+    <script src="umtx2.js"></script>
+    <script src="custom_host_stuff.js"></script>
+    <script src="syscalls.js"></script>
+    <script type="module" src="psfree/psfree.js"></script>
+    <script src="payload_map.js"></script>
+
+    <script>
+        addEventListener('unhandledrejection', (event) => {
+            const reason = event.reason;
+            // We log the line and column numbers as well since some exceptions (like
+            // SyntaxError) do not show it in the stack trace.[span_5](start_span)[span_5](end_span)
+            alert(
+                `${reason}\n`
+                + `${reason.sourceURL}:${reason.line}:${reason.column}\n`
+                + `${reason.stack}`
+            );
+            throw reason;
+        });
+        document.getElementById("current-fw").innerHTML = fw_str;
+        registerAppCacheEventHandlers();
+        registerL2ButtonHandler();
+        window.onload = function () {
+            let autoload = sessionStorage.getItem(SESSIONSTORE_ON_LOAD_AUTORUN_KEY);
+            if (autoload) {
+                run(autoload == "wkonly", false);
+            }
+        };
+    </script>
+</body>
+
+</html>
