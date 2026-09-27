@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Elya Host For PS4 505 & 672 & 7XX - 13.52</title>
+<style type="text/css">
+:root {
+  --bg-color: #0f1015;
+  --panel-bg: rgba(20, 21, 30, 0.75);
+  --accent-gold: #f39c12;
+  --accent-green: #2ecc71;
+  --text-main: #ecf0f1;
+  --text-muted: #95a5a6;
+  --border-glow: rgba(243, 156, 18, 0.3);
+}
+
+body {
+  background-color: var(--bg-color);
+  background-image: radial-gradient(circle at 50% 0%, #1f2235 0%, var(--bg-color) 75%);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 20px;
+  min-height: 95vh;
+}
+
+#container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--panel-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 14px;
+  padding: 10px 25px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+#clock, #date {
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--text-main);
+  letter-spacing: 0.5px;
+}
+
+.main-title {
+  font-size: 24px;
+  text-align: center;
+  color: var(--accent-gold);
+  margin: 15px 0 5px 0;
+  text-shadow: 0 0 20px rgba(243, 156, 18, 0.3);
+}
+
+#msgs2 {
+  font-size: 18px;
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 25px;
+  min-height: 24px;
+  font-weight: 500;
+}
+
+#MyItems {
+  text-align: center;
+  background: var(--panel-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  padding: 30px 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+}
+
+button {
+  background: rgba(25, 27, 38, 0.8);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  width: 170px;
+  height: 43px;            
+  text-align: center;
+  padding: 6px;
+  margin: 6px;
+  color: var(--text-main);
+  font-family: inherit;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--border-glow);
+  background-color: #1a1d29;
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.pointer { cursor: pointer; }
+
+.content {
+  width: 90%;
+  margin: 25px auto 0 auto;
+  background: rgba(15, 16, 22, 0.6);
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 16px;
+  padding: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.text {
+  padding-bottom: 10px;
+}
+
+.yellow {
+  color: var(--accent-gold);
+}
+
+.hue {
+  color: white;
+  padding: 6px 14px;
+  border-radius: 8px;
+  animation: hue 6s linear infinite;
+  -webkit-animation: hue 6s linear infinite;
+  box-shadow: 0 0 20px rgba(243, 156, 18, 0.4);
+  background: rgba(243, 156, 18, 0.2);
+  font-weight: bold;
+}
+
+.hue:hover {
+  color: var(--accent-gold);
+  background: transparent;
+}
+
+@keyframes hue {
+  0% { filter: hue-rotate(0deg); }
+  50% { box-shadow: 0 0 25px var(--accent-gold); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+.special-thanks {
+  margin-top: 15px;
+  font-size: 15px;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 12px;
+}
+
+.special-thanks span {
+  color: var(--text-main);
+  font-weight: 500;
+}
+</style>
+<script>
+    function showdate() {
+      var dt = new Date();
+      Hour = dt.getHours();
+      Minute = dt.getMinutes();
+      Day = dt.getDate();
+      Month = dt.getMonth() + 1;
+      Year = dt.getFullYear();
+      if (Minute < 10) { Minute = "0" + Minute; };
+      if (Hour < 10) { Hour = "0" + Hour; };
+      document.getElementById("date").innerHTML = (Day + "/" + Month + "/" + Year);
+      document.getElementById("clock").innerHTML = (Hour + ":" + Minute);
+    }
+    
+    setInterval(showdate, 0);
+</script>
+</head>
+<body>
+<div id="container">
+  <div class="top-bar">
+    <span id="date"></span>
+    <span id="clock"></span>
+  </div>
+
+  <h1 class="main-title">Elya Host For PS4 505 & 672 & 7XX - 13.52</h1>
+  <h1 id="msgs2">Status</h1>
+
+  <div id="MyItems">
+    <!-- Row 1 -->
+    <a href="copych/index.html"><button style="width: 200px; height: 40px; font-size:20px; color:yellow;" class="pointer" onMouseOver="msgs2.innerHTML='Copy Cheat For 505 & 672 & 702 & 755 & 900'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>Copy Cheat</b></button></a>
+    <a href="https://karo218.ir/espweb/index.html"><button style="width: 200px; height: 40px; font-size:20px; color:#2ecc71;" class="pointer" onMouseOver="msgs2.innerHTML='Karo WEB ESP For 505 & 672 & 702 & 755 & 900'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>WEB ESP</b></button></a>
+    <a href="binloader/index.html"><button style="width: 200px; height: 40px; font-size:20px; color:yellow;" class="pointer" onMouseOver="msgs2.innerHTML='Binloader For 505 & 672 & 702 & 755 & 900'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>Binloader</b></button></a><br>
+
+    <!-- Row 2: 5.05 -->
+    <a href="505/index.html"><button style="font-size:20px; color:white;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host For 505'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>5.05 old</b></button></a>
+    <a href="505Gold/index.html"><button style="font-size:20px; color:yellow;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host Gold For 505'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>5.05 Gold</b></button></a>
+    <a href="Goldhen505/index.html"><button style="font-size:20px; color:yellow;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host Goldhen V2.4b18.2 For 505'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>Goldhen505</b></button></a>
+    <a href="http://karo218.ir/esp505tr/index.html"><button style="font-size:20px; color:white;" class="pointer" onMouseOver="msgs2.innerHTML='ESP host (ps4trainer + goldhen + webrte + binloader) Host For 505'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>ESP505tr</b></button></a><br>
+
+    <!-- Row 3: 6.72 -->
+    <a href="672/index.html"><button style="font-size:20px; color:#2ecc71;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host Manual Exploit Full Cache and Compressed version For 672'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>6.72</b></button></a>
+    <a href="672A/index.html"><button style="font-size:20px; color:#2ecc71;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host Auto Exploit Full Cache and Compressed version For 672'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>6.72A</b></button></a>
+    <a href="672L/index.html"><button style="font-size:20px; color:white;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host Light For 672'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>6.72L</b></button></a>
+    <a href="Goldhen672/index.html"><button style="font-size:20px; color:yellow;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host Goldhen V2.4b18.9 For 672'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>Goldhen672</b></button></a>
+    <a href="http://karo218.ir/esp672tr/index.html"><button style="font-size:20px; color:white;" class="pointer" onMouseOver="msgs2.innerHTML='ESP host (ps4trainer + goldhen + webrte + binloader) Host For 672'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>ESP672tr</b></button></a><br>
+
+    <!-- Row 4: 7.02 -->
+    <a href="702/index.html"><button style="font-size:20px; color:#2ecc71;" class="pointer" onMouseOver="msgs2.innerHTML='Karo New Host Auto Exploit and Compressed New Webkit PSFree version For 702'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>7.02</b></button></a>
+    <a href="702L/index.html"><button style="font-size:20px; color:white;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host For 702 New Webkit PSFree Light version'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>7.02L</b></button></a>
+    <a href="http://karo218.ir/702Gold/index.html"><button style="font-size:20px; color:yellow;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host Gold New Webkit PSFree with payload sender For 702'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>7.02 Gold</b></button></a>
+    <a href="G702/index.html"><button style="font-size:20px; color:yellow;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host Goldhen V2.3 with New Webkit PSFree For 700 - 702'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>Goldhen702</b></button></a>
+    <a href="http://karo218.ir/esp702tr/index.html"><button style="font-size:20px; color:white;" class="pointer" onMouseOver="msgs2.innerHTML='ESP host (ps4trainer + goldhen + webrte + binloader) Host For 702'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>ESP702tr</b></button></a><br>
+
+    <!-- Row 5: 7.55 -->
+    <a href="755/index.html"><button style="font-size:20px; color:#2ecc71;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host Auto Exploit and Compressed New Webkit PSFree version For 75X'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>7.55</b></button></a>
+    <a href="755L/index.html"><button style="font-size:20px; color:white;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host For 75X New Webkit PSFree Light version'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>7.55L</b></button></a>
+    <a href="http://karo218.ir/755Gold/index.html"><button style="font-size:20px; color:yellow;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host Gold New Webkit PSFree with payload sender For 75X'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>7.55 Gold</b></button></a>
+    <a href="G755/index.html"><button style="font-size:20px; color:yellow;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host Goldhen 2.3 For 755 New Webkit PSFree'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>Goldhen755</b></button></a>
+    <a href="http://karo218.ir/esp755tr/index.html"><button style="font-size:20px; color:white;" class="pointer" onMouseOver="msgs2.innerHTML='ESP host (ps4trainer + goldhen + webrte + binloader) Host For 755'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>ESP755tr</b></button></a><br>
+
+    <!-- Row 6: 9.00 -->
+    <a href="900L/index.html"><button style="font-size:20px; color:yellow;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host Auto Explot Light + New Webkit PSFree For 900'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>9.00L</b></button></a>
+    <a href="900NM/index.html"><button style="font-size:20px; color:#2ecc71;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host Manual Exploit Full Cache and New Webkit PSFree + Compressed version For 900'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>9.00NM</b></button></a>
+    <a href="900New/index.html"><button style="font-size:20px; color:#2ecc71;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host Auto Exploit Compressed + New Webkit PSFree Version 9.00 fw'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>9.00 New</b></button></a>
+    <a href="G900/index.html"><button style="font-size:20px; color:yellow;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host auto Exploit + Goldhen V2.4b18.9 + New Webkit PSFree For 900'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>Goldhen900</b></button></a>
+    <a href="http://karo218.ir/esp900tr/index.html"><button style="font-size:20px; color:white;" class="pointer" onMouseOver="msgs2.innerHTML='ESP host (ps4trainer + goldhen + webrte + binloader) Host For 900'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>ESP900tr</b></button></a><br>
+
+    <!-- Row 7: Pro & Trainers -->
+    <a href="g2allpro/index.html"><button style="font-size:20px; color:yellow;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host Auto Exploit GoldHen 2.4b18.12  PS4 5.05 & 7.XX - 13.52 FW Pro'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>G2AllPro</b></button></a>
+    <a href="http://karo218.ir/PS4TRAINER/index.html"><button style="width: 450px; height: 45px; font-size:20px; background-color:#1b1e36; color:white;" class="pointer" onMouseOver="msgs2.innerHTML='PS4Trainer Offline'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>PS4Trainer Offline (27.01.2024)</b></button></a>
+    <a href="g2all/index.html"><button style="font-size:20px; color:yellow;" class="pointer" onMouseOver="msgs2.innerHTML='Karo Host auto Exploit + Goldhen 2.4b18.9 + New Webkit PSFree + Lapse For 7.02-9.60 Orginal'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>G2All</b></button></a><br>
+
+    <!-- Row 8: Restores -->
+    <a href="restore/index.html"><button style="width: 290px; height: 45px; font-size:20px; color:yellow;" class="pointer" onMouseOver="msgs2.innerHTML='Restore Hosts to Users Guide by Karo For 505 & 672 & 702 & 755 & 900'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>Restore Host</b></button></a>
+    <a href="restore2/index.html"><button style="width: 290px; height: 45px; font-size:20px; color:yellow;" class="pointer" onMouseOver="msgs2.innerHTML='Restore PS4Trainer Offline to Users Guide by Karo For 505 & 672 & 702 & 755 & 900'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>Restore PS4Trainer Offline</b></button></a>
+    <a href="http://karo218.ir/esp/index.html"><button style="width: 290px; height: 45px; font-size:20px; color:yellow;" class="pointer" onMouseOver="msgs2.innerHTML='Restore ESP hosts (ps4trainer+goldhen+webrte+binloader) to Users Guide by Karo For All FW'" onmouseout="msgs2.innerHTML='Status'" type="button"><b>Restore ESP Hosts</b></button></a> 
+
+    <div class="content">
+      <div class="text">
+        <br><span class="yellow">Designed, Ported and Compiled by :</span>&nbsp;&nbsp; <span class="hue">elya</span>
+        <div class="special-thanks">
+          <span>Special Thanks:</span> Scene Developers, Exploit Contributors, &amp; Testers
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
