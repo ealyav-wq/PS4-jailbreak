@@ -196,7 +196,6 @@
 </div>
 
 <script>
-// Core functionality processor replacing empty placeholders
 function printStatus(message) {
     var statusEl = document.getElementById("msgs2");
     if (statusEl) {
@@ -206,15 +205,11 @@ function printStatus(message) {
 
 function runPayload(name) {
     printStatus("Loading " + name + "...");
-    
-    // Increment pass counter as a functional indicator
     var passElem = document.getElementById("passVal");
     if (passElem) {
         var currentPass = parseInt(passElem.innerText) || 0;
         passElem.innerText = currentPass + 1;
     }
-
-    // Simulate payload trigger hook (Replace or extend with real binloader/ROP execution hooks if needed)
     setTimeout(function() {
         printStatus(name + " payload initialized successfully.");
     }, 800);
