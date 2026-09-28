@@ -1,245 +1,236 @@
 <!DOCTYPE html>
-<html manifest="offlinexmb.cache" lang="en">
+<html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Elya Host - PS4 5.05 & 6.72 & 7.XX - 13.52</title>
-<style>
-    :root {
-        --bg-color: #0b0e14;
-        --card-bg: #161b22;
-        --accent-blue: #00e5ff;
-        --accent-glow: rgba(0, 229, 255, 0.25);
-        --text-primary: #f0f6fc;
-        --text-secondary: #8b949e;
-        --border-color: rgba(255, 255, 255, 0.1);
-        --gold-yellow: #e3b341;
-        --pass-green: #3fb950;
-        --fail-red: #f85149;
-    }
+<title>Elya Host For PS4 505 & 672 & 7.XX - 13.52</title>
+<style type="text/css">
+:root {
+  --bg-dark: #0b0e14;
+  --card-bg: rgba(22, 27, 34, 0.75);
+  --accent-cyan: #00e5ff;
+  --accent-gold: #e3b341;
+  --text-main: #f0f6fc;
+  --text-muted: #8b949e;
+  --border-glow: rgba(0, 229, 255, 0.3);
+}
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
+body {
+  background-color: var(--bg-dark);
+  background-image: radial-gradient(circle at 50% 0%, #161b22 0%, var(--bg-dark) 75%);
+  color: var(--text-main);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 20px;
+  min-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    body {
-        background-color: var(--bg-color);
-        color: var(--text-primary);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        min-height: 100vh;
-        padding: 20px;
-    }
+#container {
+  width: 100%;
+  max-width: 1000px;
+  text-align: center;
+}
 
-    .top-bar {
-        width: 100%;
-        max-width: 900px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 14px;
-        font-weight: 700;
-        margin-bottom: 15px;
-    }
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
 
-    .pass-count { color: var(--pass-green); }
-    .fail-count { color: var(--fail-red); }
+#clock, #date {
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--accent-cyan);
+  background: var(--card-bg);
+  padding: 8px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
 
-    .header-container {
-        text-align: center;
-        margin-bottom: 20px;
-    }
+h1.main-title {
+  font-size: 24px;
+  text-align: center;
+  color: var(--accent-gold);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 10px 0;
+  text-shadow: 0 0 15px rgba(227, 179, 65, 0.3);
+}
 
-    h1.main-title {
-        color: var(--gold-yellow);
-        font-size: 20px;
-        font-weight: 800;
-        letter-spacing: 1.5px;
-        text-transform: uppercase;
-        margin-bottom: 10px;
-    }
+#msgs2 {
+  font-size: 16px;
+  text-align: center;
+  color: var(--text-main);
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 10px;
+  border-radius: 12px;
+  margin: 15px auto 25px auto;
+  max-width: 600px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
 
-    #msgs2 {
-        font-size: 15px;
-        font-weight: 500;
-        color: var(--accent-blue);
-        min-height: 24px;
-        margin-bottom: 15px;
-    }
+#MyItems {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
 
-    .container {
-        width: 100%;
-        max-width: 900px;
-        text-align: center;
-    }
+button {
+  background: var(--card-bg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  width: 170px;
+  height: 45px;
+  text-align: center;
+  padding: 6px;
+  margin: 4px;
+  color: var(--text-main);
+  font-weight: 600;
+  transition: all 0.25s ease;
+  backdrop-filter: blur(5px);
+}
 
-    button.pointer {
-        background: var(--card-bg);
-        color: var(--text-primary);
-        border: 1px solid var(--border-color);
-        border-radius: 20px;
-        padding: 10px 20px;
-        margin: 6px;
-        font-size: 13px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s ease;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    }
+button:hover {
+  box-shadow: 0 0 20px var(--border-glow);
+  background-color: #1f6feb;
+  color: white;
+  border-color: var(--accent-cyan);
+  transform: translateY(-2px);
+}
 
-    button.pointer:hover {
-        background: var(--accent-blue);
-        color: #000;
-        border-color: var(--accent-blue);
-        box-shadow: 0 0 15px var(--accent-glow);
-    }
+.content {
+  width: 90%;
+  max-width: 800px;
+  margin: 30px auto 10px auto;
+  background: var(--card-bg);
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+}
 
-    .content {
-        margin-top: 30px;
-        background: var(--card-bg);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 12px;
-        padding: 20px;
-        text-align: center;
-        font-size: 13px;
-        color: var(--text-secondary);
-    }
+.yellow {
+  color: var(--accent-gold);
+  font-weight: 700;
+}
 
-    .yellow {
-        color: var(--gold-yellow);
-        font-weight: 700;
-    }
+.hue {
+  color: white;
+  padding: 6px 16px;
+  border-radius: 10px;
+  animation: hue 5s linear infinite;
+  -webkit-animation: hue 5s linear infinite;
+  box-shadow: 0px 0px 25px var(--accent-gold);
+  background: rgba(227, 179, 65, 0.2);
+  display: inline-block;
+  font-weight: bold;
+}
 
-    .hue {
-        color: var(--accent-blue);
-        font-weight: bold;
-        background: rgba(0, 229, 255, 0.1);
-        padding: 4px 12px;
-        border-radius: 12px;
-        display: inline-block;
-        border: 1px solid rgba(0, 229, 255, 0.3);
-    }
+.hue:hover {
+  color: var(--accent-gold);
+  background: transparent;
+}
+
+@keyframes hue {
+  0% { filter: hue-rotate(0deg); -webkit-filter: hue-rotate(0deg); }
+  50% { box-shadow: 0px 0px 15px var(--accent-cyan); }
+  100% { filter: hue-rotate(360deg); -webkit-filter: hue-rotate(360deg); }
+}
+
+.pointer { cursor: pointer; }
+a { text-decoration: none; }
 </style>
-</head>
-<body>
 
-    <!-- Top Status Bar -->
-    <div class="top-bar">
-        <div class="pass-count">Pass = <span id="passVal">0</span></div>
-        <div class="fail-count">Fail = <span id="failVal">0</span></div>
-    </div>
-
-<div class="header-container">
-    <h1 class="main-title">Elya Host For PS4 5.05 & 6.72 & 7.XX - 13.52</h1>
-    <div id="msgs2">Ready. Select your firmware exploit.</div>
-</div>
-
-<div class="container">
-  <!-- MAIN MENU -->
-  <div id="all">
-    <button class="pointer" onclick="loadPayload('copy_cheat')">Copy Cheat</button>
-    <button class="pointer" onclick="loadPayload('web_esp')">WEB ESP</button>
-    <button class="pointer" onclick="loadPayload('binloader')">Binloader</button>
-    <button class="pointer" onclick="redirectToTrainer()">PS4 Offline Trainer</button>
-    <br>
-    <button class="pointer" onclick="loadExploit('505')">5.05 old</button>
-    <button class="pointer" onclick="loadExploit('505gold')">5.05 Gold</button>
-    <button class="pointer" onclick="loadExploit('goldhen505')">Goldhen505</button>
-    <button class="pointer" onclick="loadExploit('esp505')">ESP505</button>
-    <br>
-    <button class="pointer" onclick="loadExploit('672')">6.72</button>
-    <button class="pointer" onclick="loadExploit('672a')">6.72A</button>
-    <button class="pointer" onclick="loadExploit('672l')">6.72L</button>
-    <button class="pointer" onclick="loadExploit('goldhen672')">Goldhen672</button>
-    <br>
-    <button class="pointer" onclick="loadExploit('esp672')">ESP672</button>
-    <br>
-    <button class="pointer" onclick="loadExploit('702')">7.02</button>
-    <button class="pointer" onclick="loadExploit('702l')">7.02L</button>
-    <button class="pointer" onclick="loadExploit('gold702')">Gold702</button>
-    <button class="pointer" onclick="loadExploit('goldhen702')">Goldhen702</button>
-    <br>
-    <button class="pointer" onclick="loadExploit('esp702')">ESP702</button>
-    <br>
-    <button class="pointer" onclick="loadExploit('755')">7.55</button>
-    <button class="pointer" onclick="loadExploit('755l')">7.55L</button>
-    <button class="pointer" onclick="loadExploit('gold755')">Gold755</button>
-    <button class="pointer" onclick="load_goldhen755()">Goldhen755</button>
-    <br>
-    <button class="pointer" onclick="loadExploit('esp755')">ESP755</button>
-    <br>
-    <button class="pointer" onclick="loadExploit('900l')">9.00L</button>
-    <button class="pointer" onclick="loadExps900nm()">9.00NM</button>
-    <button class="pointer" onclick="loadExploit('900new')">9.00New</button>
-    <button class="pointer" onclick="loadExploit('goldhen900')">Goldhen900</button>
-    <br>
-    <button class="pointer" onclick="loadExploit('esp900')">ESP900</button>
-    <br>
-    <button class="pointer" style="border-color:var(--gold-yellow); color:var(--gold-yellow);" onclick="loadExploit('pro')">Pro</button>
-    <button class="pointer" onclick="loadExploit('allinone')">All-in-One</button>
-    <br>
-    <button class="pointer" onclick="loadExploit('restore')">Restore</button>
-    <button class="pointer" onclick="loadExploit('restore2')">Restore 2</button>
-    <br>
-    <button class="pointer" onclick="loadExploit('esprestore')">ESP Restore</button>
-  </div>
-
-  <!-- CREDITS & SPECIAL THANKS SECTION -->
-  <div class="content">
-    <span class="yellow">Designed, Ported and Compiled by :</span>&nbsp;&nbsp;<span class="hue">elya</span>
-    <br><br>
-    <span class="yellow">Special Thanks :</span>&nbsp;&nbsp;<span style="color:var(--text-primary);">Karo Sharifi, Scene Developers, Exploit Contributors, & Testers</span>
-  </div>
-</div>
-
-<!-- Real Exploit Execution Scripts Hookup -->
 <script>
-function printStatus(msg) {
-    document.getElementById("msgs2").innerHTML = msg;
+function showdate() {
+  var dt = new Date();
+  var Hour = dt.getHours();
+  var Minute = dt.getMinutes();
+  var Day = dt.getDate();
+  var Month = dt.getMonth() + 1;
+  var Year = dt.getFullYear();
+  if (Minute < 10) { Minute = "0" + Minute; }
+  if (Hour < 10) { Hour = "0" + Hour; }
+  document.getElementById("date").innerHTML = (Day + "/" + Month + "/" + Year);
+  document.getElementById("clock").innerHTML = (Hour + ":" + Minute);
 }
-
-function redirectToTrainer() {
-    printStatus("Opening PS4 Offline Trainer...");
-    setTimeout(function() {
-        window.location.href = "./trainer.html"; // Adjust to your actual trainer file path
-    }, 300);
-}
-
-function loadExploit(fwVersion) {
-    printStatus("Initializing WebKit exploit for " + fwVersion + "...");
-    
-    // Increment pass counter
-    var passElem = document.getElementById("passVal");
-    passElem.innerText = parseInt(passElem.innerText) + 1;
-
-    // Standard procedure to inject actual exploit files dynamically
-    setTimeout(function() {
-        printStatus("Exploit container loaded. Injecting kernel payload...");
-        
-        // Dynamic script injection example to load your actual exploit files from your repo folders
-        var script = document.createElement('script');
-        script.src = "./exploits/" + fwVersion + "/exploit.js";
-        script.onerror = function() {
-            printStatus("Error: Could not load payload files for " + fwVersion + ". Check file paths.");
-            var failElem = document.getElementById("failVal");
-            failElem.innerText = parseInt(failElem.innerText) + 1;
-        };
-        script.onload = function() {
-            printStatus("Payload executed successfully for " + fwVersion + "!");
-        };
-        document.body.appendChild(script);
-    }, 1000);
-}
-
-function loadPayload(payloadType) {
-    printStatus("Loading utility: " + payloadType + "...");
-    setTimeout(function() {
-        printStatus(payloadType + " is active and listening.");
-    }, 800);
-}
+setInterval(showdate, 0);
 </script>
+</head>
+<body class="bg-darker">
+<div id="container">
+  <div class="top-bar">
+    <span id="date"></span>
+    <span id="clock"></span>
+  </div>
+
+  <h1 class="main-title">Elya Host For PS4 505 & 672 & 7.XX - 13.52</h1>
+  <h1 id="msgs2">Status</h1>
+
+  <div id="MyItems">
+    <a href="copych/index.html"><button style="width: 200px; height: 40px; font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Copy Cheat For 505 & 672 & 702 & 755 & 900'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>Copy Cheat</b></button></a>
+    <a href="https://karo218.ir/espweb/index.html"><button style="width: 200px; height: 40px; font-size: 18px; color: #3fb950;" class="pointer" onMouseOver="msgs2.innerHTML='WEB ESP For 505 & 672 & 702 & 755 & 900'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>WEB ESP</b></button></a>
+    <a href="binloader/index.html"><button style="width: 200px; height: 40px; font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Binloader For 505 & 672 & 702 & 755 & 900'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>Binloader</b></button></a><br>
+
+    <a href="505/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='Host For 505'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>5.05 old</b></button></a>
+    <a href="505Gold/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Gold For 505'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>5.05 Gold</b></button></a>
+    <a href="Goldhen505/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Goldhen V2.4b18.2 For 505'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>Goldhen505</b></button></a>
+    <a href="http://karo218.ir/esp505tr/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='ESP host (ps4trainer + goldhen + webrte + binloader) Host For 505'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>ESP505tr</b></button></a><br>
+
+    <a href="672/index.html"><button style="font-size: 18px; color: #3fb950;" class="pointer" onMouseOver="msgs2.innerHTML='Host Manual Exploit Full Cache and Compressed version For 672'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>6.72</b></button></a>
+    <a href="672A/index.html"><button style="font-size: 18px; color: #3fb950;" class="pointer" onMouseOver="msgs2.innerHTML='Host Auto Exploit Full Cache and Compressed version For 672'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>6.72A</b></button></a>
+    <a href="672L/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='Host Light For 672'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>6.72L</b></button></a>
+    <a href="Goldhen672/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Goldhen V2.4b18.9 For 672'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>Goldhen672</b></button></a>
+    <a href="http://karo218.ir/esp672tr/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='ESP host (ps4trainer + goldhen + webrte + binloader) Host For 672'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>ESP672tr</b></button></a><br>
+
+    <a href="702/index.html"><button style="font-size: 18px; color: #3fb950;" class="pointer" onMouseOver="msgs2.innerHTML='New Host Auto Exploit and Compressed New Webkit PSFree version For 702'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>7.02</b></button></a>
+    <a href="702L/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='Host For 702 New Webkit PSFree Light version'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>7.02L</b></button></a>
+    <a href="http://karo218.ir/702Gold/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Gold New Webkit PSFree with payload sender For 702'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>7.02 Gold</b></button></a>
+    <a href="G702/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Goldhen V2.3 with New Webkit PSFree For 700 - 702'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>Goldhen702</b></button></a>
+    <a href="http://karo218.ir/esp702tr/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='ESP host (ps4trainer + goldhen + webrte + binloader) Host For 702'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>ESP702tr</b></button></a><br>
+
+    <a href="755/index.html"><button style="font-size: 18px; color: #3fb950;" class="pointer" onMouseOver="msgs2.innerHTML='Host Auto Exploit and Compressed New Webkit PSFree version For 75X'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>7.55</b></button></a>
+    <a href="755L/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='Host For 75X New Webkit PSFree Light version'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>7.55L</b></button></a>
+    <a href="http://karo218.ir/755Gold/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Gold New Webkit PSFree with payload sender For 75X'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>7.55 Gold</b></button></a>
+    <a href="G755/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Goldhen 2.3 For 755 New Webkit PSFree'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>Goldhen755</b></button></a>
+    <a href="http://karo218.ir/esp755tr/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='ESP host (ps4trainer + goldhen + webrte + binloader) Host For 755'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>ESP755tr</b></button></a><br>
+
+    <a href="900L/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Auto Explot Light + New Webkit PSFree For 900'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>9.00L</b></button></a>
+    <a href="900NM/index.html"><button style="font-size: 18px; color: #3fb950;" class="pointer" onMouseOver="msgs2.innerHTML='Host Manual Exploit Full Cache and New Webkit PSFree + Compressed version For 900'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>9.00NM</b></button></a>
+    <a href="900New/index.html"><button style="font-size: 18px; color: #3fb950;" class="pointer" onMouseOver="msgs2.innerHTML='Host Auto Exploit Compressed + New Webkit PSFree Version 9.00 fw'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>9.00 New</b></button></a>
+    <a href="G900/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host auto Exploit + Goldhen V2.4b18.9 + New Webkit PSFree For 900'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>Goldhen900</b></button></a>
+    <a href="http://karo218.ir/esp900tr/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='ESP host (ps4trainer + goldhen + webrte + binloader) Host For 900'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>ESP900tr</b></button></a><br>
+
+    <a href="g2allpro/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Auto Exploit GoldHen 2.4b18.12 PS4 5.05 & 7.XX - 13.52 FW Pro'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>G2AllPro</b></button></a>
+    <a href="http://karo218.ir/PS4TRAINER/index.html"><button style="width: 450px; height: 45px; font-size: 18px; background-color: #1f6feb; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='PS4Trainer Offline'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>PS4Trainer Offline (27.01.2024)</b></button></a>
+    <a href="g2all/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host auto Exploit + Goldhen 2.4b18.9 + New Webkit PSFree + Lapse For 7.02-9.60 Orginal'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>G2All</b></button></a><br>
+
+    <a href="restore/index.html"><button style="width: 290px; height: 45px; font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Restore Hosts to Users Guide For 505 & 672 & 702 & 755 & 900'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>Restore Host</b></button></a>
+    <a href="restore2/index.html"><button style="width: 290px; height: 45px; font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Restore PS4Trainer Offline to Users Guide For 505 & 672 & 702 & 755 & 900'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>Restore PS4Trainer Offline</b></button></a>
+    <a href="http://karo218.ir/esp/index.html"><button style="width: 290px; height: 45px; font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Restore ESP hosts to Users Guide For All FW'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>Restore ESP Hosts</b></button></a>
+  </div>
+
+  <div class="content">
+    <div style="line-height: 1.8;">
+      <span class="yellow">Designed, Ported and Compiled by :</span>&nbsp;&nbsp;<span class="hue">elya</span>
+      <br>
+      <span class="yellow" style="font-size: 15px;">Special Thanks :</span>&nbsp;&nbsp;<span style="font-size: 15px; color: var(--text-muted);">Karo Sharifi, Scene Developers, Exploit Contributors, & Testers</span>
+    </div>
+  </div>
+</div>
 </body>
 </html>
