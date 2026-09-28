@@ -1,269 +1,104 @@
-<html>
-<title>Karo Host nobd 7.5X FW</title>
-	<style>
-        .switch {
-		  position: relative;
-		  display: inline-block;
-		  width: 60px;
-		  height: 34px;
-		}
-
-		.switch input { 
-		  opacity: 0;
-		  width: 0;
-		  height: 0;
-		}
-
-		.slider {
-		  position: absolute;
-		  cursor: pointer;
-		  top: 0;
-		  left: 0;
-		  right: 0;
-		  bottom: 0;
-		  background-color: #2196F3;
-		  -webkit-transition: .4s;
-		  transition: .4s;
-		}
-		
-		.slider.new {
-		  position: absolute;
-		  cursor: pointer;
-		  top: 0;
-		  left: 0;
-		  right: 0;
-		  bottom: 0;
-		  background-color: #585858;
-		  -webkit-transition: .4s;
-		  transition: .4s;
-		}
-
-		.slider:before {
-		  position: absolute;
-		  content: "";
-		  height: 26px;
-		  width: 26px;
-		  left: 4px;
-		  bottom: 4px;
-		  background-color: white;
-		  -webkit-transition: .4s;
-		  transition: .4s;
-		}
-
-		input:checked + .slider {
-		  background-color: #2196F3;
-		}
-
-		input:focus + .slider {
-		  box-shadow: 0 0 1px #2196F3;
-		}
-
-		input:checked + .slider:before {
-		  -webkit-transform: translateX(26px);
-		  -ms-transform: translateX(26px);
-		  transform: translateX(26px);
-		}
-
-		/* Rounded sliders */
-		.slider.round {
-		  border-radius: 34px;
-		}
-
-		.slider.round:before {
-		  border-radius: 50%;
-		}
-		.button {
-		  background:rgba(0,0,0,0.5);
-		  box-shadow: 0 5px 20px 0 white;
-		  border: 2px solid black;
-		  border-radius: 10px;
-		  color: white;
-		  text-decoration: none;
-		  width: 200px;
-          height: 35px;
-		  display:inline-table;
-		  font-family: system-ui;
-		  text-align: center;
-		}
-
-		.button:focus,
-		.button:hover {
-		  color: White;
-		  box-shadow: 0 5px 50px 0 white;
-		  background-color: #0F0F53;
-          border-radius: 10px;
-		}
-
-		.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Elya Host - 7.5X FW</title>
+<style type="text/css">
+:root {
+  --bg-color: #060709;
+  --panel-bg: rgba(12, 14, 20, 0.85);
+  --accent-gold: #f39c12;
+  --accent-cyan: #00f2fe;
+  --accent-green: #2ecc71;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border-glow: rgba(243, 156, 18, 0.5);
 }
-  .content {
-  width:80%;
-  margin-left:7.5%;
-  background:rgba(0,0,0,0.5);
-  color:white;
-  margin-top:0%;
-  font-size:25px;
-  text-align:center;
-  border-radius:30px;
-  padding:20px;
-  line-height:20px;
-  position:absolute;bottom:0px;
- }
- .title {
-  font-size:40px;
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-weight:bolder;
-  margin-bottom:10px;
- }
- .yellow {
-  color:yellow;
- }
- .hue {
-  color:yellow;
-  padding:10px;
-  border-radius:10px;
-  animation:hue 5s linear infinite;
-  -webkit-animation: hue 5s linear infinite;
-  box-shadow: 0px 0px 50px yellow;
-  color:white;
-  background:rgba(255,255,0,0.4);
- }
- .hue:hover{
-  color:yellow;
-  background:transparent;
- }
- @keyframes hue{
- 0%{
- filter:hue-rotate(0deg);
- -webkit-filter:hue-rotate(0deg);
- }
- 10%{
- box-shadow: 0px 1px 50px yellow;
- }
- 20%{
- box-shadow: 1px 1px 50px yellow;
- }
- 30%{
- box-shadow: 1px 0px 50px yellow;
- }
- 40%{
-  box-shadow: 1px -1px 50px yellow;
- }
- 50%{
- box-shadow: 0px -1px 50px yellow;
- }
- 60%{
- box-shadow: -1px -1px 50px yellow;
- }
- 70%{
- box-shadow: -1px 0px 50px yellow;
- }
- 80%{
- box-shadow: -1px 1px 50px yellow;
- }
- 90%{
- box-shadow: 0px 1px 50px yellow;
- }
- 100%{
- filter:hue-rotate(360deg);
- -webkit-filter:hue-rotate(360deg);
- }
- }
- .text {
-  padding-bottom:50px;
- }
-  .back {
-   font-size:25px;
-   margin-top:10px;
-   display:block;
-   line-height:55px;
-   width:20%;
-   text-decoration:none;
-   height:50px;
-   background:white;
-   color:black;
-   border-radius:15px;
-  }
-  .back:hover{
-   border:2px solid white;
-   background:transparent;
-   box-sizing:border-box;
-   color:white;
-  }
-/* Modal Content */
-.modal-content {
-  font-family: BFARNAZ;
-  font-size: 18px;
-  position: relative;
-  background-color: #dddddd;
-  margin: auto;
-  padding: 0;
-  border: 1px solid #888;
-  width: 50%;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s
+
+body.bg {
+  background-color: var(--bg-color);
+  background-image: radial-gradient(circle at 50% -20%, #1e2235 0%, var(--bg-color) 70%);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 25px;
+  min-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+
+#container-box {
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  background: var(--panel-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 40px 30px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+}
+
 .titleheadx {
-		  background-color: #1A1920;  
-		  border-radius: 5px;
-		  color: white;
-		  padding: .5em;
-		  text-decoration: none;
-		  text-align: center;
-		  margin-top: 17%;
-		  margin-bottom: -10px;
-		  font-family: system-ui;
+  background: transparent;
+  color: var(--accent-gold);
+  font-size: 32px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  margin-bottom: 15px;
+  text-shadow: 0 0 20px rgba(243, 156, 18, 0.4);
 }
 
-.titlehead {
-		  background-color: #1A1920;  
-		  color: white;
-		  padding: .5em;
-		  text-align: center;
-		  margin-top: 0%;
-		  font-family: system-ui;
-		  font-size:30px;
-		  text-shadow: 4px 4px 4px black;
+.content {
+  margin-top: 30px;
+  background: rgba(8, 9, 13, 0.75);
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 20px;
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
 }
 
-		.bg {
-		  /* The image used */
-		  background-color:#1A1920;
-		  font-family: system-ui;
-		  /* Center and scale the image nicely */
-		  background-position: center;
-		  background-repeat: no-repeat;
-		  background-size: cover;
-		}
+.hue {
+  color: white;
+  padding: 6px 18px;
+  border-radius: 25px;
+  animation: hue 6s linear infinite;
+  -webkit-animation: hue 6s linear infinite;
+  box-shadow: 0 0 25px rgba(243, 156, 18, 0.5);
+  background: rgba(243, 156, 18, 0.2);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
 
-       #Progress {
-		  color: white;
-		}
+@keyframes hue {
+  0% { filter: hue-rotate(0deg); }
+  50% { box-shadow: 0 0 35px var(--accent-gold); }
+  100% { filter: hue-rotate(360deg); }
+}
 
-       #Progressx {
-		  color: white;
-		}
+.special-thanks {
+  margin-top: 15px;
+  font-size: 14px;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 12px;
+}
 
-.pointer {cursor: pointer;}
-	</style>
-	<body onload="go()" class="bg">
-		<script>
+.special-thanks span {
+  color: var(--text-main);
+  font-weight: 500;
+}
+
+.text-yellow { color: var(--accent-gold); }
+</style>
+
+<script>
 function print(){}
 
 var fwFromUA = navigator.userAgent.substring(navigator.userAgent.indexOf('5.0 (') + 19, navigator.userAgent.indexOf(') Apple'));
@@ -317,15 +152,32 @@ window.postExploit = function()
     }, 100);
 };
 </script>
-		<script src="utils.js"></script>
-		<script src="int64.js"></script>
-		<script src="ps4.js"></script>
-        <h1 id="progressx" class="titleheadx">Loading ...</h1><br>
-		<button style="opacity:0" id="input1" onfocus="handle2()"></button>
-		<button style="opacity:0" id="input2"></button>
-		<button style="opacity:0" id="input3" onfocus="handle2()"></button>
-		<select style="opacity:0" id="select1">
-			<option value="value1">Value1</option>
-		</select>
+<script src="utils.js"></script>
+<script src="int64.js"></script>
+<script src="ps4.js"></script>
+</head>
+<body onload="go()" class="bg">
+
+<div id="container-box">
+  <h1 id="progressx" class="titleheadx">Loading ...</h1>
+
+  <div class="content">
+    <div class="text">
+      <span class="text-yellow">Designed, Ported and Compiled by :</span>&nbsp;&nbsp; <span class="hue">elya</span>
+      <div class="special-thanks">
+        <span>Special Thanks:</span> Scene Developers, Exploit Contributors, &amp; Testers
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Hidden inputs and selects required by the exploit handler chain -->
+<button style="opacity:0; position:absolute; left:-9999px;" id="input1" onfocus="handle2()"></button>
+<button style="opacity:0; position:absolute; left:-9999px;" id="input2"></button>
+<button style="opacity:0; position:absolute; left:-9999px;" id="input3" onfocus="handle2()"></button>
+<select style="opacity:0; position:absolute; left:-9999px;" id="select1">
+    <option value="value1">Value1</option>
+</select>
+
 </body>
 </html>
