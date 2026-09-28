@@ -2,196 +2,127 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Elya Host - Binloader for 5.05, 6.72, 7.02 & 7.55 FW</title>
+<title>Binloader - Elya Host</title>
 <style type="text/css">
-    :root {
-        --bg-color: #0b0e14;
-        --card-bg: #161b22;
-        --accent-blue: #00e5ff;
-        --accent-glow: rgba(0, 229, 255, 0.25);
-        --text-primary: #f0f6fc;
-        --text-secondary: #8b949e;
-        --border-color: rgba(255, 255, 255, 0.1);
-        --accent-gold: #e3b341;
-    }
-
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-    }
-
-    body {
-        background-color: var(--bg-color);
-        color: var(--text-primary);
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        min-height: 100vh;
-        padding: 24px 20px;
-    }
-
-    .top-bar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%;
-        max-width: 900px;
-        margin: 0 auto;
-        font-weight: 600;
-        font-size: 16px;
-        color: var(--text-secondary);
-    }
-
-    .main-container {
-        width: 100%;
-        max-width: 900px;
-        margin: 0 auto;
-        text-align: center;
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        padding: 20px 0;
-    }
-
-    h1.section-title {
-        color: var(--accent-blue);
-        font-size: 22px;
-        font-weight: 800;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        text-shadow: 0 0 15px var(--accent-glow);
-        margin-bottom: 8px;
-    }
-
-    .status-card {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        border-radius: 50px;
-        padding: 10px 24px;
-        display: inline-block;
-        margin-bottom: 30px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    #msgs2 {
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--text-primary);
-    }
-
-    .section-heading {
-        font-size: 20px;
-        font-weight: 700;
-        color: var(--accent-gold);
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        margin-bottom: 24px;
-    }
-
-    .button-grid {
-        display: flex;
-        justify-content: center;
-        gap: 16px;
-        flex-wrap: wrap;
-        margin-bottom: 40px;
-    }
-
-    .fw-btn {
-        background: var(--card-bg);
-        border: 1px solid var(--border-color);
-        color: var(--text-primary);
-        font-size: 18px;
-        font-weight: 700;
-        border-radius: 12px;
-        width: 160px;
-        height: 50px;
-        cursor: pointer;
-        transition: all 0.2s ease-in-out;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        text-decoration: none;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .fw-btn:hover {
-        border-color: var(--accent-gold);
-        color: var(--accent-gold);
-        background: rgba(227, 179, 65, 0.05);
-        box-shadow: 0 0 20px rgba(227, 179, 65, 0.2);
-        transform: translateY(-2px);
-    }
-
-    .content-footer {
-        width: 100%;
-        max-width: 900px;
-        margin: 0 auto;
-        background: var(--card-bg);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 12px;
-        padding: 20px;
-        text-align: center;
-        font-size: 14px;
-        color: var(--text-secondary);
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    }
-
-    .credits-author {
-        color: #ffffff;
-        font-weight: bold;
-        font-size: 15px;
-        margin-top: 4px;
-    }
-</style>
-
-<script>
-function showdate() {
-    var dt = new Date();
-    var Hour = dt.getHours();
-    var Minute = dt.getMinutes();
-    var Day = dt.getDate();
-    var Month = dt.getMonth() + 1;
-    var Year = dt.getFullYear();
-    if (Minute < 10) { Minute = "0" + Minute; }
-    if (Hour < 10) { Hour = "0" + Hour; }
-    document.getElementById("date").innerHTML = (Day + "/" + Month + "/" + Year);
-    document.getElementById("clock").innerHTML = (Hour + ":" + Minute);
+:root {
+  --bg-color: #060709;
+  --panel-bg: rgba(12, 14, 20, 0.85);
+  --accent-gold: #f39c12;
+  --accent-cyan: #00f2fe;
+  --text-main: #f1f5f9;
+  --text-muted: #94a3b8;
+  --border-glow: rgba(243, 156, 18, 0.5);
 }
-setInterval(showdate, 0);
-</script>
+
+body {
+  background-color: var(--bg-color);
+  background-image: radial-gradient(circle at 50% -20%, #1e2235 0%, var(--bg-color) 70%);
+  color: var(--text-main);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  margin: 0;
+  padding: 25px;
+  min-height: 95vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#container {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  background: var(--panel-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 40px 20px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+}
+
+.main-title {
+  font-size: 24px;
+  color: var(--accent-gold);
+  margin-bottom: 10px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+#msgs2 {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 30px;
+  min-height: 24px;
+  font-weight: 500;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+button {
+  background: linear-gradient(135deg, rgba(25, 28, 40, 0.9), rgba(15, 17, 24, 0.95));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50px;
+  height: 48px;
+  width: 180px;
+  color: var(--text-main);
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+button:hover, button:focus {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 25px var(--border-glow);
+  background: linear-gradient(135deg, rgba(35, 40, 58, 0.95), rgba(22, 25, 36, 0.95));
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  outline: none;
+}
+
+.back-btn {
+  margin-top: 25px;
+  display: inline-block;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.2s;
+}
+
+.back-btn:hover {
+  color: var(--accent-gold);
+}
+</style>
 </head>
 <body>
 
-<div class="top-bar">
-    <span id="date"></span>
-    <span id="clock"></span>
-</div>
+<div id="container">
+  <h1 class="main-title">BINLOADER FOR 5.05, 6.72, 7.02 & 7.55</h1>
+  <div id="msgs2">Status: Waiting for payload...</div>
 
-<div class="main-container">
-    <h1 class="section-title">Binloader For 5.05, 6.72, 7.02 & 7.55[span_0](start_span)[span_0](end_span)</h1>
-    
-    <div>
-        <div class="status-card">
-            <span id="msgs2">Status</span>[span_1](start_span)[span_1](end_span)
-        </div>
-    </div>
+  <div class="subtitle" style="font-size: 15px; color: var(--text-muted); margin-bottom: 20px; font-weight: 600;">SELECT FIRMWARE</div>
 
-    <div class="section-heading">Select Firmware</div>
+  <div class="button-row">
+    <button onclick="msgs2.innerHTML='Status: Ready for 5.05 Payload (Port 9020)'">5.05</button>
+    <button onclick="msgs2.innerHTML='Status: Ready for 6.72 Payload (Port 9020)'">6.72</button>
+  </div>
+  <div class="button-row">
+    <button onclick="msgs2.innerHTML='Status: Ready for 7.02 Payload (Port 9020)'">7.02</button>
+    <button onclick="msgs2.innerHTML='Status: Ready for 7.55 Payload (Port 9020)'">7.55</button>
+  </div>
 
-    <div class="button-grid">
-        <a href="505/index.html" class="fw-btn" onmouseover="msgs2.innerHTML='Restore for 5.05 FW'" onmouseout="msgs2.innerHTML='Status'">5.05</a>[span_2](start_span)[span_2](end_span)
-        <a href="672/index.html" class="fw-btn" onmouseover="msgs2.innerHTML='Restore for 6.72 FW'" onmouseout="msgs2.innerHTML='Status'">6.72</a>[span_3](start_span)[span_3](end_span)
-        <a href="702/index.html" class="fw-btn" onmouseover="msgs2.innerHTML='Restore for 7.02 FW'" onmouseout="msgs2.innerHTML='Status'">7.02</a>[span_4](start_span)[span_4](end_span)
-        <a href="755/index.html" class="fw-btn" onmouseover="msgs2.innerHTML='Restore for 7.5X FW'" onmouseout="msgs2.innerHTML='Status'">7.55</a>[span_5](start_span)[span_5](end_span)
-    </div>
-</div>
-
-<div class="content-footer">
-    <div>Designed, Ported and Compiled By</div>
-    <div class="credits-author">Elya (Originally by Karo Sharifi)[span_6](start_span)[span_6](end_span)</div>
+  <div>
+    <a href="../index.html" class="back-btn">&larr; Back to Main Host</a>
+  </div>
 </div>
 
 </body>
