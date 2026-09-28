@@ -204,9 +204,10 @@ function printStatus(message) {
 }
 
 function redirectToTrainer() {
-    printStatus("Redirecting to PS4 Offline Trainer...");
+    printStatus("Opening PS4 Offline Trainer...");
     setTimeout(function() {
-        window.location.href = "https://ealyav-wq.github.io/PS4-jailbreak/PS4Trainer/index.html";
+        // Change this URL if your trainer file has a different folder name or file name
+        window.location.href = "./trainer.html"; 
     }, 400);
 }
 
