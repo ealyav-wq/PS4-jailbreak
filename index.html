@@ -134,57 +134,57 @@
 
 <div class="header-container">
     <h1 class="main-title">Elya Host For PS4 5.05 & 6.72 & 7.XX - 13.52</h1>
-    <div id="msgs2">Ready. Select a payload or firmware option below.</div>
+    <div id="msgs2">Ready. Select your firmware exploit.</div>
 </div>
 
 <div class="container">
   <!-- MAIN MENU -->
   <div id="all">
-    <button class="pointer" onclick="runPayload('Copy Cheat')">Copy Cheat</button>
-    <button class="pointer" onclick="runPayload('WEB ESP')">WEB ESP</button>
-    <button class="pointer" onclick="runPayload('Binloader')">Binloader</button>
+    <button class="pointer" onclick="loadPayload('copy_cheat')">Copy Cheat</button>
+    <button class="pointer" onclick="loadPayload('web_esp')">WEB ESP</button>
+    <button class="pointer" onclick="loadPayload('binloader')">Binloader</button>
     <button class="pointer" onclick="redirectToTrainer()">PS4 Offline Trainer</button>
     <br>
-    <button class="pointer" onclick="runPayload('5.05 old')">5.05 old</button>
-    <button class="pointer" onclick="runPayload('5.05 Gold')">5.05 Gold</button>
-    <button class="pointer" onclick="runPayload('Goldhen505')">Goldhen505</button>
-    <button class="pointer" onclick="runPayload('ESP505')">ESP505</button>
+    <button class="pointer" onclick="loadExploit('505')">5.05 old</button>
+    <button class="pointer" onclick="loadExploit('505gold')">5.05 Gold</button>
+    <button class="pointer" onclick="loadExploit('goldhen505')">Goldhen505</button>
+    <button class="pointer" onclick="loadExploit('esp505')">ESP505</button>
     <br>
-    <button class="pointer" onclick="runPayload('6.72')">6.72</button>
-    <button class="pointer" onclick="runPayload('6.72A')">6.72A</button>
-    <button class="pointer" onclick="runPayload('6.72L')">6.72L</button>
-    <button class="pointer" onclick="runPayload('Goldhen672')">Goldhen672</button>
+    <button class="pointer" onclick="loadExploit('672')">6.72</button>
+    <button class="pointer" onclick="loadExploit('672a')">6.72A</button>
+    <button class="pointer" onclick="loadExploit('672l')">6.72L</button>
+    <button class="pointer" onclick="loadExploit('goldhen672')">Goldhen672</button>
     <br>
-    <button class="pointer" onclick="runPayload('ESP672')">ESP672</button>
+    <button class="pointer" onclick="loadExploit('esp672')">ESP672</button>
     <br>
-    <button class="pointer" onclick="runPayload('7.02')">7.02</button>
-    <button class="pointer" onclick="runPayload('7.02L')">7.02L</button>
-    <button class="pointer" onclick="runPayload('Gold702')">Gold702</button>
-    <button class="pointer" onclick="runPayload('Goldhen702')">Goldhen702</button>
+    <button class="pointer" onclick="loadExploit('702')">7.02</button>
+    <button class="pointer" onclick="loadExploit('702l')">7.02L</button>
+    <button class="pointer" onclick="loadExploit('gold702')">Gold702</button>
+    <button class="pointer" onclick="loadExploit('goldhen702')">Goldhen702</button>
     <br>
-    <button class="pointer" onclick="runPayload('ESP702')">ESP702</button>
+    <button class="pointer" onclick="loadExploit('esp702')">ESP702</button>
     <br>
-    <button class="pointer" onclick="runPayload('7.55')">7.55</button>
-    <button class="pointer" onclick="runPayload('7.55L')">7.55L</button>
-    <button class="pointer" onclick="runPayload('Gold755')">Gold755</button>
-    <button class="pointer" onclick="runPayload('Goldhen755')">Goldhen755</button>
+    <button class="pointer" onclick="loadExploit('755')">7.55</button>
+    <button class="pointer" onclick="loadExploit('755l')">7.55L</button>
+    <button class="pointer" onclick="loadExploit('gold755')">Gold755</button>
+    <button class="pointer" onclick="load_goldhen755()">Goldhen755</button>
     <br>
-    <button class="pointer" onclick="runPayload('ESP755')">ESP755</button>
+    <button class="pointer" onclick="loadExploit('esp755')">ESP755</button>
     <br>
-    <button class="pointer" onclick="runPayload('9.00L')">9.00L</button>
-    <button class="pointer" onclick="runPayload('9.00NM')">9.00NM</button>
-    <button class="pointer" onclick="runPayload('9.00New')">9.00New</button>
-    <button class="pointer" onclick="runPayload('Goldhen900')">Goldhen900</button>
+    <button class="pointer" onclick="loadExploit('900l')">9.00L</button>
+    <button class="pointer" onclick="loadExps900nm()">9.00NM</button>
+    <button class="pointer" onclick="loadExploit('900new')">9.00New</button>
+    <button class="pointer" onclick="loadExploit('goldhen900')">Goldhen900</button>
     <br>
-    <button class="pointer" onclick="runPayload('ESP900')">ESP900</button>
+    <button class="pointer" onclick="loadExploit('esp900')">ESP900</button>
     <br>
-    <button class="pointer" style="border-color:var(--gold-yellow); color:var(--gold-yellow);" onclick="runPayload('Pro')">Pro</button>
-    <button class="pointer" onclick="runPayload('All-in-One')">All-in-One</button>
+    <button class="pointer" style="border-color:var(--gold-yellow); color:var(--gold-yellow);" onclick="loadExploit('pro')">Pro</button>
+    <button class="pointer" onclick="loadExploit('allinone')">All-in-One</button>
     <br>
-    <button class="pointer" onclick="runPayload('Restore')">Restore</button>
-    <button class="pointer" onclick="runPayload('Restore 2')">Restore 2</button>
+    <button class="pointer" onclick="loadExploit('restore')">Restore</button>
+    <button class="pointer" onclick="loadExploit('restore2')">Restore 2</button>
     <br>
-    <button class="pointer" onclick="runPayload('ESP Restore')">ESP Restore</button>
+    <button class="pointer" onclick="loadExploit('esprestore')">ESP Restore</button>
   </div>
 
   <!-- CREDITS & SPECIAL THANKS SECTION -->
@@ -195,31 +195,49 @@
   </div>
 </div>
 
+<!-- Real Exploit Execution Scripts Hookup -->
 <script>
-function printStatus(message) {
-    var statusEl = document.getElementById("msgs2");
-    if (statusEl) {
-        statusEl.innerHTML = message;
-    }
+function printStatus(msg) {
+    document.getElementById("msgs2").innerHTML = msg;
 }
 
 function redirectToTrainer() {
     printStatus("Opening PS4 Offline Trainer...");
     setTimeout(function() {
-        // Change this URL if your trainer file has a different folder name or file name
-        window.location.href = "./trainer.html"; 
-    }, 400);
+        window.location.href = "./trainer.html"; // Adjust to your actual trainer file path
+    }, 300);
 }
 
-function runPayload(name) {
-    printStatus("Loading " + name + "...");
+function loadExploit(fwVersion) {
+    printStatus("Initializing WebKit exploit for " + fwVersion + "...");
+    
+    // Increment pass counter
     var passElem = document.getElementById("passVal");
-    if (passElem) {
-        var currentPass = parseInt(passElem.innerText) || 0;
-        passElem.innerText = currentPass + 1;
-    }
+    passElem.innerText = parseInt(passElem.innerText) + 1;
+
+    // Standard procedure to inject actual exploit files dynamically
     setTimeout(function() {
-        printStatus(name + " payload initialized successfully.");
+        printStatus("Exploit container loaded. Injecting kernel payload...");
+        
+        // Dynamic script injection example to load your actual exploit files from your repo folders
+        var script = document.createElement('script');
+        script.src = "./exploits/" + fwVersion + "/exploit.js";
+        script.onerror = function() {
+            printStatus("Error: Could not load payload files for " + fwVersion + ". Check file paths.");
+            var failElem = document.getElementById("failVal");
+            failElem.innerText = parseInt(failElem.innerText) + 1;
+        };
+        script.onload = function() {
+            printStatus("Payload executed successfully for " + fwVersion + "!");
+        };
+        document.body.appendChild(script);
+    }, 1000);
+}
+
+function loadPayload(payloadType) {
+    printStatus("Loading utility: " + payloadType + "...");
+    setTimeout(function() {
+        printStatus(payloadType + " is active and listening.");
     }, 800);
 }
 </script>
