@@ -1,7 +1,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Elya Host For PS4 505 & 672 & 7.XX - 13.52</title>
+<title id="page-title">Elya Host For PS4 505 & 672 & 7.XX - 13.52</title>
 <style type="text/css">
 :root {
   --bg-dark: #0b0e14;
@@ -42,7 +42,7 @@ body {
   box-sizing: border-box;
 }
 
-#clock, #date {
+#clock, #date, #lang-btn {
   font-weight: 700;
   font-size: 20px;
   color: var(--accent-cyan);
@@ -51,6 +51,19 @@ body {
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+#lang-btn {
+  cursor: pointer;
+  color: var(--accent-gold);
+  transition: all 0.25s ease;
+}
+
+#lang-btn:hover {
+  box-shadow: 0 0 20px var(--border-glow);
+  background-color: #1f6feb;
+  color: white;
+  border-color: var(--accent-cyan);
 }
 
 h1.main-title {
@@ -168,51 +181,79 @@ function showdate() {
   document.getElementById("clock").innerHTML = (Hour + ":" + Minute);
 }
 setInterval(showdate, 0);
+
+// Language Translation Dictionary
+const langData = {
+  en: {
+    dir: "ltr",
+    title: "Elya Host For PS4 505 & 672 & 7.XX - 13.52",
+    status: "Status",
+    toggle: "عربي",
+    footer: "Designed, Ported and Compiled by :",
+    thanks: "Special Thanks : Karo Sharifi, Scene Developers, Exploit Contributors, & all the community"
+  },
+  ar: {
+    dir: "rtl",
+    title: "مضيف ايليا لأجهزة PS4 و PS5 - إصدارات متعددة",
+    status: "الحالة",
+    toggle: "English",
+    footer: ": تصميم، تعديل وجمع بواسطة",
+    thanks: "شكر خاص: كارو شريفي، مطورو السีน، مساهمو الثغرات، وكل المجتمع"
+  }
+};
+
+let currentLang = 'en';
+
+function toggleLanguage() {
+  currentLang = currentLang === 'en' ? 'ar' : 'en';
+  const t = langData[currentLang];
+  
+  document.documentElement.setAttribute('dir', t.dir);
+  document.getElementById('page-title').innerText = t.title;
+  document.getElementById('main-title').innerText = t.title;
+  document.getElementById('msgs2').innerText = t.status;
+  document.getElementById('lang-btn').innerText = t.toggle;
+  document.getElementById('footer-text').innerText = t.footer;
+  document.getElementById('thanks-text').innerText = t.thanks;
+}
 </script>
 </head>
 <body class="bg-darker">
 <div id="container">
   <div class="top-bar">
     <span id="date"></span>
+    <button id="lang-btn" onclick="toggleLanguage()">عربي</button>
     <span id="clock"></span>
   </div>
 
-  <h1 class="main-title">Elya Host For PS4 505 & 672 & 7.XX - 13.52</h1>
+  <h1 id="main-title" class="main-title">Elya Host For PS4 505 & 672 & 7.XX - 13.52</h1>
   <h1 id="msgs2">Status</h1>
 
   <div id="MyItems">
     <a href="copych/index.html"><button style="width: 200px; height: 40px; font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Copy Cheat For 505 & 672 & 702 & 7XX'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>Copy Cheat</b></button></a>
-    <a href="https://karo218.ir/espweb/index.html"><button style="width: 200px; height: 40px; font-size: 18px; color: #3fb950;" class="pointer" onMouseOver="msgs2.innerHTML='WEB ESP For 505 & 672 & 702 & 7XX'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>WEB ESP</b></button></a>
     <a href="binloader/index.html"><button style="width: 200px; height: 40px; font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Binloader For 505 & 672 & 702 & 7XX'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>Binloader</b></button></a>
 
     <a href="505/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='Host For 505'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>5.05 Host</b></button></a>
     <a href="505Gold/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Gold For 505'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>5.05 Gold</b></button></a>
     <a href="Goldhen505/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Goldhen V2.4b18.2 For 505'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>GoldHen 5.05</b></button></a>
-    <a href="http://karo218.ir/esp505tr/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='ESP host (ps4trainer + goldhen + webrte + binloader) for 5.05'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>ESP 5.05</b></button></a>
 
     <a href="672/index.html"><button style="font-size: 18px; color: #3fb950;" class="pointer" onMouseOver="msgs2.innerHTML='Host Manual Exploit Full Cache and Compressed version For 672'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>6.72 Host</b></button></a>
     <a href="672A/index.html"><button style="font-size: 18px; color: #3fb950;" class="pointer" onMouseOver="msgs2.innerHTML='Host Auto Exploit Full Cache and Compressed version For 672'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>6.72 Auto</b></button></a>
     <a href="672L/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='Host Light For 672'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>6.72 Light</b></button></a>
     <a href="Goldhen672/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Goldhen V2.4b18.9 For 672'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>GoldHen 6.72</b></button></a>
-    <a href="http://karo218.ir/esp672tr/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='ESP host (ps4trainer + goldhen + webrte + binloader) for 6.72'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>ESP 6.72</b></button></a>
 
     <a href="702/index.html"><button style="font-size: 18px; color: #3fb950;" class="pointer" onMouseOver="msgs2.innerHTML='New Host Auto Exploit and Compressed New Webkit PSFree version For 702'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>7.02 Host</b></button></a>
     <a href="702L/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='Host For 702 New Webkit PSFree Light version'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>7.02 Light</b></button></a>
-    <a href="http://karo218.ir/702Gold/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Gold New Webkit PSFree with payloads For 702'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>7.02 Gold</b></button></a>
     <a href="G702/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Goldhen V2.3 with New Webkit PSFree For 700 - 702'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>GoldHen 7.02</b></button></a>
-    <a href="http://karo218.ir/esp702tr/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='ESP host (ps4trainer + goldhen + webrte + binloader) for 7.02'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>ESP 7.02</b></button></a>
 
     <a href="755/index.html"><button style="font-size: 18px; color: #3fb950;" class="pointer" onMouseOver="msgs2.innerHTML='Host Auto Exploit and Compressed New Webkit PSFree version For 75X'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>7.55 Host</b></button></a>
     <a href="755L/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='Host For 75X New Webkit PSFree Light version'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>7.55 Light</b></button></a>
-    <a href="http://karo218.ir/755Gold/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Gold New Webkit PSFree with payloads For 75X'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>7.55 Gold</b></button></a>
     <a href="G755/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Goldhen 2.3 For 755 New Webkit PSFree'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>GoldHen 7.55</b></button></a>
-    <a href="http://karo218.ir/esp755tr/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='ESP host (ps4trainer + goldhen + webrte + binloader) for 7.55'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>ESP 7.55</b></button></a>
 
     <a href="900L/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Auto Explot Light + New Webkit PSFree For 900'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>9.00 Light</b></button></a>
     <a href="900NM/index.html"><button style="font-size: 18px; color: #3fb950;" class="pointer" onMouseOver="msgs2.innerHTML='Host Manual Exploit Full Cache and New Webkit PSFree + Compressed version For 900'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>9.00 Manual</b></button></a>
     <a href="900New/index.html"><button style="font-size: 18px; color: #3fb950;" class="pointer" onMouseOver="msgs2.innerHTML='Host Auto Exploit Compressed + New Webkit PSFree Version 9.00 fw'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>9.00 Auto</b></button></a>
     <a href="G900/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host auto Exploit + Goldhen V2.4b18.9 + New Webkit PSFree For 900'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>GoldHen 9.00</b></button></a>
-    <a href="http://karo218.ir/esp900tr/index.html"><button style="font-size: 18px; color: white;" class="pointer" onMouseOver="msgs2.innerHTML='ESP host (ps4trainer + goldhen + webrte + binloader) for 900'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>ESP 9.00</b></button></a>
 
     <a href="g2allpro/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host Auto Exploit GoldHen 2.4b18.12 PS4 5.05 & 7.XX - 13.52'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>G2 All Pro</b></button></a>
     <a href="g2all/index.html"><button style="font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Host auto Exploit + Goldhen 2.4b18.9 + New Webkit PSFree + 13.52'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>G2 All</b></button></a>
@@ -222,14 +263,13 @@ setInterval(showdate, 0);
     <a href="PS4Trainer/index.html"><button style="width: 190px; height: 45px; font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='PS4Trainer Offline'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>PS4Trainer</b></button></a>
     <a href="restore/index.html"><button style="width: 290px; height: 45px; font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Restore Hosts to Users Guide For PS4'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>Restore Hosts</b></button></a>
     <a href="restore2/index.html"><button style="width: 290px; height: 45px; font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Restore PS4Trainer Offline to Users Guide'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>Restore Trainer</b></button></a>
-    <a href="http://karo218.ir/esp/index.html"><button style="width: 290px; height: 45px; font-size: 18px; color: var(--accent-gold);" class="pointer" onMouseOver="msgs2.innerHTML='Restore ESP hosts to users guide'" onMouseOut="msgs2.innerHTML='Status'" type="button"><b>Restore ESP</b></button></a>
   </div>
 
   <div class="content">
     <div style="line-height: 1.8;">
-      <span class="yellow">Designed, Ported and Compiled by :</span>&nbsp;&nbsp;<span class="hue">Elya</span>
+      <span id="footer-text" class="yellow">Designed, Ported and Compiled by :</span>&nbsp;&nbsp;<span class="hue">ايليا</span>
       <br>
-      <span class="yellow" style="font-size: 15px;">Special Thanks :</span>&nbsp;&nbsp;<span style="font-size: 15px; color: var(--text-muted);">Karo Sharifi, Scene Developers, Exploit Contributors, &amp; all the community</span>
+      <span id="thanks-text" class="yellow" style="font-size: 15px;">Special Thanks : Karo Sharifi, Scene Developers, Exploit Contributors, &amp; all the community</span>
     </div>
   </div>
 </div>
