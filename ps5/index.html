@@ -3,16 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <title>PS5 Relapse Host - Elya</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PS5 Relapse Exploit</title>
   <style>
     :root {
-      --bg-color: #0b0e14;
-      --card-bg: rgba(22, 27, 34, 0.85);
-      --accent-cyan: #00e5ff;
-      --accent-gold: #e3b341;
+      --bg-color: #0b0c10;
+      --panel-bg: #111318;
+      --accent: #e3b341;
+      --accent-glow: rgba(227, 179, 65, 0.2);
       --text-main: #f0f6fc;
       --text-muted: #8b949e;
-      --border-glow: rgba(0, 229, 255, 0.3);
+      --border-color: rgba(227, 179, 65, 0.25);
     }
 
     * {
@@ -21,166 +22,95 @@
       padding: 0;
     }
 
-    body {
-      background-color: var(--bg-color);
-      background-image: radial-gradient(circle at 50% 0%, #161b22 0%, var(--bg-color) 75%);
+    html, body {
+      background: var(--bg-color);
       color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: space-between;
-      min-height: 100vh;
-      padding: 30px 20px;
+      justify-content: center;
+      padding: 20px;
     }
 
     .container {
       width: 100%;
-      max-width: 800px;
+      max-width: 750px;
+      background: var(--panel-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent-glow);
       text-align: center;
     }
 
-    h1.main-title {
-      font-size: 26px;
-      color: var(--accent-gold);
+    h1 {
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+      color: var(--accent);
+      margin-bottom: 8px;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      margin-bottom: 10px;
-      text-shadow: 0 0 15px rgba(227, 179, 65, 0.3);
     }
 
-    p.subtitle {
+    .subtitle {
+      font-size: 0.85rem;
       color: var(--text-muted);
-      font-size: 14px;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
     }
 
-    /* Console / Status Box Styling */
     #console {
-      width: 100%;
-      height: 250px;
-      background: var(--card-bg);
+      background: #060606;
       border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-      padding: 20px;
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 180px;
+      max-height: 350px;
+      overflow-y: auto;
       text-align: left;
       font-family: monospace;
-      font-size: 13px;
-      color: var(--accent-cyan);
-      overflow-y: auto;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(10px);
-      margin-bottom: 25px;
-      white-space: pre-wrap;
-      word-break: break-all;
-    }
-
-    /* Footer Credits */
-    .content {
-      width: 100%;
-      max-width: 800px;
-      background: var(--card-bg);
-      color: white;
-      font-size: 15px;
-      text-align: center;
-      border-radius: 16px;
-      padding: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
-      line-height: 1.6;
-    }
-
-    .yellow {
-      color: var(--accent-gold);
-      font-weight: 700;
-    }
-
-    .hue {
-      color: white;
-      padding: 4px 12px;
-      border-radius: 8px;
-      animation: hue 5s linear infinite;
-      -webkit-animation: hue 5s linear infinite;
-      box-shadow: 0px 0px 15px var(--accent-gold);
-      background: rgba(227, 179, 65, 0.2);
-      display: inline-block;
-      font-weight: bold;
-    }
-
-    @keyframes hue {
-      0% { filter: hue-rotate(0deg); -webkit-filter: hue-rotate(0deg); }
-      50% { box-shadow: 0px 0px 10px var(--accent-cyan); }
-      100% { filter: hue-rotate(360deg); -webkit-filter: hue-rotate(360deg); }
+      font-size: 0.85rem;
+      color: #3fb950;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
     }
 
     .back-btn {
       display: inline-block;
-      margin-top: 15px;
       background: transparent;
       color: var(--text-muted);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
       padding: 8px 18px;
-      border-radius: 10px;
-      font-size: 13px;
+      border-radius: 6px;
+      font-size: 0.85rem;
       text-decoration: none;
       transition: all 0.2s ease;
     }
 
     .back-btn:hover {
-      color: var(--text-main);
-      border-color: var(--accent-cyan);
-      background: rgba(0, 229, 255, 0.05);
+      background: rgba(227, 179, 65, 0.1);
+      color: var(--accent);
+      border-color: var(--accent);
     }
   </style>
 </head>
 <body>
-
   <div class="container">
-    <h1 class="main-title">PS5 Relapse Exploit (7.00 - 13.60)</h1>
-    <p class="subtitle">Initializing WebKit and Kernel exploit vectors. Please wait...</p>
+    <h1>PS5 Relapse Exploit</h1>
+    <p class="subtitle">Initializing WebKit and kernel exploit vectors. Please wait...</p>
     
-    <!-- Target Console/Log Screen -->
-    <div id="console">[+] Loading exploit framework...</div>
-    
-    <a href="../../index.html" class="back-btn">&larr; Back to Main Host Menu</a>
+    <!-- Original console output container -->
+    <div id="console"></div>
+
+    <a href="../index.html" class="back-btn">&larr; Back to Main Host Menu</a>
   </div>
 
-  <!-- Credits Footer -->
-  <div class="content">
-    <span class="yellow">Hosted by :</span>&nbsp;&nbsp;<span class="hue">elya</span>
-    <br>
-    <span class="yellow" style="font-size: 13px;">Original Exploit Creator :</span>&nbsp;&nbsp;<span style="font-size: 13px; color: var(--text-muted);">ntfargo & Contributors</span>
-  </div>
-
-  <!-- Auto-Redirect functionality bridging to the working PS5 Host -->
-  <script>
-    const consoleBox = document.getElementById('console');
-    
-    // Simulate loading sequence for visual effect
-    const bootSequence = [
-      "Verifying firmware compatibility...",
-      "Bypassing memory protections...",
-      "Preparing payload vectors...",
-      "Redirecting to core PS5 jailbreak host..."
-    ];
-
-    let timer = 600;
-
-    bootSequence.forEach((msg) => {
-      setTimeout(() => {
-        consoleBox.innerHTML += `\n[+] ${msg}`;
-        // Auto-scroll to bottom of console
-        consoleBox.scrollTop = consoleBox.scrollHeight;
-      }, timer);
-      timer += 700; // Adds 0.7 seconds between each message
-    });
-
-    // Execute the actual redirect after the loading sequence finishes
-    setTimeout(() => {
-      window.location.replace("https://ealyav-wq.github.io/PS4PS5-JB/ps5/index.html");
-    }, timer + 500);
-  </script>
-
+  <!-- 100% of original functionality script loading order preserved -->
+  <script src="./src/firmware.js"></script>
+  <script src="./src/main.js"></script>
+  <script src="./src/rop.js"></script>
+  <script src="./src/utils/syscalls.js"></script>
+  <script type="module" src="./src/site.js"></script>
 </body>
 </html>
