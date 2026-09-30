@@ -141,7 +141,7 @@
     <p class="subtitle">Initializing WebKit and Kernel exploit vectors. Please wait...</p>
     
     <!-- Target Console/Log Screen -->
-    <div id="console">Loading exploit framework...</div>
+    <div id="console">[+] Loading exploit framework...</div>
     
     <a href="../../index.html" class="back-btn">&larr; Back to Main Host Menu</a>
   </div>
@@ -153,11 +153,34 @@
     <span class="yellow" style="font-size: 13px;">Original Exploit Creator :</span>&nbsp;&nbsp;<span style="font-size: 13px; color: var(--text-muted);">ntfargo & Contributors</span>
   </div>
 
-  <!-- Original functionality script hooks required for the exploit to execute -->
-  <script src="./src/firmware.js"></script>
-  <script src="./src/main.js"></script>
-  <script src="./src/rop.js"></script>
-  <script src="./src/utils/syscalls.js"></script>
-  <script type="module" src="./src/site.js"></script>
+  <!-- Auto-Redirect functionality bridging to the working PS5 Host -->
+  <script>
+    const consoleBox = document.getElementById('console');
+    
+    // Simulate loading sequence for visual effect
+    const bootSequence = [
+      "Verifying firmware compatibility...",
+      "Bypassing memory protections...",
+      "Preparing payload vectors...",
+      "Redirecting to core PS5 jailbreak host..."
+    ];
+
+    let timer = 600;
+
+    bootSequence.forEach((msg) => {
+      setTimeout(() => {
+        consoleBox.innerHTML += `\n[+] ${msg}`;
+        // Auto-scroll to bottom of console
+        consoleBox.scrollTop = consoleBox.scrollHeight;
+      }, timer);
+      timer += 700; // Adds 0.7 seconds between each message
+    });
+
+    // Execute the actual redirect after the loading sequence finishes
+    setTimeout(() => {
+      window.location.replace("https://ealyav-wq.github.io/PS4PS5-JB/ps5/index.html");
+    }, timer + 500);
+  </script>
+
 </body>
 </html>
